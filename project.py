@@ -17,19 +17,25 @@ LYRICS_PATH = os.path.join(os.path.dirname(os.path.realpath(__file__)), "lyrics"
 
 # details for the command-line arguments
 DESCRIPTION = "A command-line program that posts random lyrics of BINI songs to Twitter (X)."
-HELP = "Fetch lyrics of a song by Bini online and stores it to a json file. Make sure to enclose the\
+ADD_HELP = "Fetch lyrics of a song by Bini online and stores it to a json file. Make sure to enclose the\
     song title in quotes."
+SONG_HELP = "Get random lyrics from a specific song. Make sure to enclose the song title in quotes."
+
+
 def main():
     parser = argparse.ArgumentParser(description=DESCRIPTION)
-    parser.add_argument("--add", metavar='"Song Title"', help=HELP)
+    parser.add_argument("--add", metavar='"Song Title"', help=ADD_HELP)
+    parser.add_argument("--song", metavar='"Song Title"', help=SONG_HELP)
     args = parser.parse_args()
+
     if args.add:
         fetch_lyrics_online(args.add, "BINI", Genius(LYRICS_TOKEN), LYRICS_PATH)
+        return
     
     client = tweepy.Client(BEARER_TOKEN, CONSUMER_KEY, CONSUMER_SECRET, ACCESS_TOKEN, ACCESS_TOKEN_SECRET)
     
     try:
-        songs: list[str] = scan_songs()
+        songs: list[str] = [f"BINI - {args.song}"] if args.song else scan_songs()
         tweet: str = get_randomized_lyrics(songs)
         client.create_tweet(text=tweet)
         print(f"Tweet:\n\n{tweet}")
