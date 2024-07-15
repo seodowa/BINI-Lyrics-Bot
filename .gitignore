@@ -1,0 +1,6 @@
+__pycache__
+.pytest_cache
+lyrics backup
+lyrics_test
+my_venv
+execute_project_py.bat
