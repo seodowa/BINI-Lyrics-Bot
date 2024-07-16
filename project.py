@@ -1,5 +1,10 @@
 import tweepy, os, json, random, re, time, argparse
-from tweepy import errors
+from tweepy.errors import (BadRequest, 
+                           Forbidden,
+                           Unauthorized,
+                           NotFound,
+                           TooManyRequests,
+                           TwitterServerError)
 from lyricsgenius import Genius 
 
 
@@ -34,15 +39,24 @@ def main():
     
     client = tweepy.Client(BEARER_TOKEN, CONSUMER_KEY, CONSUMER_SECRET, ACCESS_TOKEN, ACCESS_TOKEN_SECRET)
     
-    try:
-        songs: list[str] = [f"BINI - {args.song}"] if args.song else scan_songs()
-        tweet: str = get_randomized_lyrics(songs)
-        client.create_tweet(text=tweet)
-        print(f"Tweet:\n\n{tweet}")
-        print("Tweeted successfully!")
+    while True:
+        try:
+            songs: list[str] = [f"BINI - {args.song}"] if args.song else scan_songs()
+            tweet: str = get_randomized_lyrics(songs)
+            client.create_tweet(text=tweet)
+            print(f"Tweet:\n\n{tweet}")
+            print("Tweeted successfully!")
+            break
 
-    except (errors.HTTPException, FileNotFoundError) as err:
-        print(f"Error: {err}")
+        except (BadRequest, Unauthorized, NotFound, TooManyRequests, 
+                TwitterServerError, FileNotFoundError) as err:
+            print(f"Failed to post tweet. Error: {err}.")
+            break
+
+        except Forbidden as err:
+            print(f"Failed to post tweet. Error: {err}.")
+            print(f"Retrying...")
+            time.sleep(1)
 
 
 def scan_songs(songs_dir: str=LYRICS_PATH) -> list[str]:
@@ -76,7 +90,7 @@ def get_randomized_lyrics(songs: list[str], path_to_songs: str=LYRICS_PATH) -> s
         with open(f"{path_to_songs}\\{chosen_song}.json", encoding="utf-8") as f:
             lyrics = json.load(f)
             song_title = chosen_song.split("-")[-1].title().strip()
-            return f'From "{song_title}":\n\n{lyrics[random.randint(0, len(lyrics)-1)]}'
+            return f'From "{song_title}":\n\n{lyrics[random.randint(0, len(lyrics)-1)]}' 
     
     except FileNotFoundError:
         raise FileNotFoundError(f"{path_to_songs} directory not found.")
