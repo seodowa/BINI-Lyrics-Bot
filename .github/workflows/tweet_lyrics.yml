@@ -8,16 +8,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest # Define the runner OS
-
-    env:
-      ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-      ACCESS_TOKEN_SECRET: ${{ secrets.ACCESS_TOKEN_SECRET }}
-      BEARER_TOKEN: ${{ secrets.BEARER_TOKEN }}
-      CONSUMER_KEY: ${{ secrets.CONSUMER_KEY }}
-      CONSUMER_SECRET: ${{ secrets.CONSUMER_SECRET }}
-      LYRICS_TOKEN: ${{ secrets.LYRICS_TOKEN }}
-      LYRICS_PATH: ${{ github.workspace }}/lyrics
-
+    
     steps:
       - name: Set Timezone
         uses: szenius/set-timezone@v2.0
@@ -35,4 +26,12 @@ jobs:
         run: pip install -r requirements.txt # Install dependencies from requirements.txt
       
       - name: Run Python script (tweet random lyrics)
+        env:
+          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+          ACCESS_TOKEN_SECRET: ${{ secrets.ACCESS_TOKEN_SECRET }}
+          BEARER_TOKEN: ${{ secrets.BEARER_TOKEN }}
+          CONSUMER_KEY: ${{ secrets.CONSUMER_KEY }}
+          CONSUMER_SECRET: ${{ secrets.CONSUMER_SECRET }}
+          LYRICS_TOKEN: ${{ secrets.LYRICS_TOKEN }}
+          LYRICS_PATH: ${{ github.workspace }}/lyrics
         run: python project.py 
