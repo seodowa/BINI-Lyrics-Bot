@@ -11,8 +11,8 @@ def test_fetch_lyrics_online():
 
 
 def test_clean_lyrics():
-    lyrics = "You might also like the [test] Embed"
-    assert project.clean_lyrics(lyrics) == [" the ", " "]
+    lyrics = "You might also like the [test] test Embed"
+    assert project.clean_lyrics(lyrics) == [" test "]
 
 
 def test_get_randomized_songs():

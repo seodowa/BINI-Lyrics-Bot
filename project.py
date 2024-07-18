@@ -7,11 +7,10 @@ from tweepy.errors import (BadRequest,
                            TwitterServerError)
 from lyricsgenius import Genius 
 
-
 # tokens for tweepy
 BEARER_TOKEN = os.getenv("BEARER_TOKEN")
 CONSUMER_KEY = os.getenv("CONSUMER_KEY")
-CONSUMER_SECRET = os.getenv("CONSUMER_KEY_SECRET")
+CONSUMER_SECRET = os.getenv("CONSUMER_SECRET")
 ACCESS_TOKEN = os.getenv("ACCESS_TOKEN")
 ACCESS_TOKEN_SECRET = os.getenv("ACCESS_TOKEN_SECRET")
 
@@ -133,6 +132,7 @@ def clean_lyrics(lyrics: str) -> list[str]:
     cleaned_lyrics = [line.removeprefix("\n") for line in temp_lyrics]
 
     return cleaned_lyrics
+
 
 if __name__ == "__main__":
     main()
