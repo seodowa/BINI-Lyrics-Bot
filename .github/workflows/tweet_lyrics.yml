@@ -19,10 +19,10 @@ jobs:
 
     steps:
       - run: echo "work pls"
-      - uses: actions/checkout@v4 # Checkout the repository code
+      - uses: actions/checkout@v2 # Checkout the repository code
 
       - name: Set up Python environment
-        uses: actions/setup-python@v5 # Setup Python environment
+        uses: actions/setup-python@v2 # Setup Python environment
         with:
           python-version: '3.12' # Specify Python version (optional)
 
