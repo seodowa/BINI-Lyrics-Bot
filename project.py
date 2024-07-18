@@ -17,7 +17,7 @@ ACCESS_TOKEN_SECRET = os.getenv("ACCESS_TOKEN_SECRET")
 # token for lyricsgenius
 LYRICS_TOKEN = os.getenv("LYRICS_TOKEN")
 
-LYRICS_PATH = os.path.join(os.path.dirname(os.path.realpath(__file__)), "lyrics")
+LYRICS_PATH = os.getenv("LYRICS_PATH")
 
 # details for the command-line arguments
 DESCRIPTION = "A command-line program that posts random lyrics of BINI songs to Twitter (X)."
