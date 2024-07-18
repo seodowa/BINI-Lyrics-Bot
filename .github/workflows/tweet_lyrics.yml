@@ -2,7 +2,7 @@ name: Tweet random BINI lyrics
 
 on:
   schedule:
-  - cron: '15,45 * * * *'
+  - cron: '*/10 * * * *'
 
 jobs:
   build:
