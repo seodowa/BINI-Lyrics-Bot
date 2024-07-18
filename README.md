@@ -3,6 +3,8 @@
 #### Description:
 This is a command-line program I created that posts to Twitter random lyrics from songs by BINI. BINI is a famous PPop girl group situated in the Philippines. 
 
+[Here is the link to the bot profile](https://x.com/rndmbinilyrics)
+
 #### (This is just me yapping stuff about the background of this project so you can skip this)
 Why I created this? I was curious how social media bots were created. I also recently got hooked into BINI so I thought why not create a bot that posts stuff related to BINI. I chose Twitter (I refuse to call it 'X' except when a gun is pointed at my head I guess) because I assumed it's easier. At first it was supposed to be a bot that posts random images of a BINI member but I found out that gathering images automatically is hard af. So I just went with lyrics since APIs like lyricsgenius exist so it's not too hard when it comes to "data gathering". 
 
