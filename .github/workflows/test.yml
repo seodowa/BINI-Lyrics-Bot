@@ -9,4 +9,4 @@ jobs:
     steps:
     - uses: actions/checkout@v3  # Checkout your repository code
     - name: List contents of BINI-Lyrics-Bot
-      run: ls -l  # List directory contents
+      run: ls -l /lyrics # List directory contents
