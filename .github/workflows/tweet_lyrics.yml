@@ -7,6 +7,13 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest # Define the runner OS
+    env:
+      ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+      ACCESS_TOKEN_SECRET: ${{ secrets.ACCESS_TOKEN_SECRET }}
+      BEARER_TOKEN: ${{ secrets.BEARER_TOKEN }}
+      CONSUMER_KEY: ${{ secrets.CONSUMER_KEY }}
+      CONSUMER_SECRET: ${{ secrets.CONSUMER_SECRET }}
+      LYRICS_TOKEN: ${{ secrets.LYRICS_TOKEN }}
 
     steps:
       - uses: actions/checkout@v4 # Checkout the repository code
