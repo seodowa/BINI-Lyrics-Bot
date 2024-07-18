@@ -9,11 +9,12 @@ Why I created this? I was curious how social media bots were created. I also rec
 Anyways that's all for the background. Now for the program's usage:
 
 #### Usage
-(You only need to do the these three steps once)
+(You only need to do the these four steps once)
 
 - First, secure your consumer keys and authentication tokens for your app [here](https://developer.x.com/en/portal/projects-and-apps) under "Keys and Tokens" (the key icon).
 - Then, secure your Genius API key [here](https://genius.com/api-clients/new).
 - [Create environment variables](https://chlee.co/how-to-setup-environment-variables-for-windows-mac-and-linux/) for BEARER_TOKEN, CONSUMER_KEY, CONSUMER_SECRET, ACCESS_TOKEN, ACCESS_TOKEN_SECRET, and LYRICS_TOKEN accordingly.
+- Also set an environment variable for the directory where the lyrics are contained, and name it "LYRICS_PATH".
 
 In the command-line interace, go to the directory where the project is located and execute:
 - 'project.py' - Gets random lyrics from a random song and posts it to Twitter.
