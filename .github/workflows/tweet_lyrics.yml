@@ -15,7 +15,7 @@ jobs:
       CONSUMER_KEY: ${{ secrets.CONSUMER_KEY }}
       CONSUMER_SECRET: ${{ secrets.CONSUMER_SECRET }}
       LYRICS_TOKEN: ${{ secrets.LYRICS_TOKEN }}
-      LYRICS_PATH: ${{ github.workspace }}/lyrics
+      LYRICS_PATH: ${{ github.workspace }}
 
     steps:
       - uses: actions/checkout@v2 # Checkout the repository code
