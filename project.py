@@ -8,11 +8,11 @@ from tweepy.errors import (BadRequest,
 from lyricsgenius import Genius 
 
 # tokens for tweepy
-BEARER_TOKEN = os.getenv("BEARER_TOKEN")
-CONSUMER_KEY = os.getenv("CONSUMER_KEY")
-CONSUMER_SECRET = os.getenv("CONSUMER_SECRET")
-ACCESS_TOKEN = os.getenv("ACCESS_TOKEN")
-ACCESS_TOKEN_SECRET = os.getenv("ACCESS_TOKEN_SECRET")
+BEARER_TOKEN = os.environ["BEARER_TOKEN"]
+CONSUMER_KEY = os.environ["CONSUMER_KEY"]
+CONSUMER_SECRET = os.environ["CONSUMER_SECRET"]
+ACCESS_TOKEN = os.environ["ACCESS_TOKEN"]
+ACCESS_TOKEN_SECRET = os.environ["ACCESS_TOKEN_SECRET"]
 
 # token for lyricsgenius
 LYRICS_TOKEN = os.getenv("LYRICS_TOKEN")
