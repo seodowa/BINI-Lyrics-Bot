@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest # Define the runner OS
     
     steps:      
-      - uses: actions/checkout@v3 # Checkout the repository code
+      - uses: actions/checkout@v4 # Checkout the repository code
         name: Set up Python environment
 
       - name: Set Timezone
@@ -20,7 +20,7 @@ jobs:
           timezoneMacos: 'Asia/Singapore'
           timezoneWindows: 'Singapore Standard Time'
         
-      - uses: actions/setup-python@v2 # Setup Python environment
+      - uses: actions/setup-python@v5 # Setup Python environment
         with:
           python-version: '3.12' # Specify Python version 
 
@@ -28,6 +28,7 @@ jobs:
         run: pip install -r requirements.txt # Install dependencies from requirements.txt
       
       - name: Run Python script (tweet random lyrics)
+        run: python project.py 
         env:
           ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
           ACCESS_TOKEN_SECRET: ${{ secrets.ACCESS_TOKEN_SECRET }}
@@ -36,4 +37,4 @@ jobs:
           CONSUMER_SECRET: ${{ secrets.CONSUMER_SECRET }}
           LYRICS_TOKEN: ${{ secrets.LYRICS_TOKEN }}
           LYRICS_PATH: ${{ github.workspace }}/lyrics
-        run: python project.py 
+        
