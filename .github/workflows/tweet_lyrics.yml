@@ -1,14 +1,13 @@
 name: Tweet random BINI lyrics
 
 on:
-  push:
-  #schedule:
-  #- cron: '15,45 * * * *'
+  schedule:
+  - cron: '15,45 * * * *'
 
 jobs:
   build:
     runs-on: ubuntu-latest # Define the runner OS
-    environment: TOKENS
+    environment: TOKENS    # where the secrets are located 
     
     steps:      
       - uses: actions/checkout@v4 # Checkout the repository code
