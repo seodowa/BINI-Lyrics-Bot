@@ -30,7 +30,7 @@ jobs:
       - name: Install dependencies 
         run: pip install -r requirements.txt # Install dependencies from requirements.txt
 
-      - run: ls ${{ github.workspace }}/lyrics
+      - run: ls $LYRICS_PATH
       
       - name: Run Python script (tweet random lyrics)
         run: python project.py 
