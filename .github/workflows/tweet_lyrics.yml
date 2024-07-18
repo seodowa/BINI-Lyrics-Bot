@@ -4,21 +4,10 @@ on:
   push:
   #schedule:
   #- cron: '15,45 * * * *'
-  push:
-  #schedule:
-  #- cron: '15,45 * * * *'
 
 jobs:
   build:
     runs-on: ubuntu-latest # Define the runner OS
-    env:
-      ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-      ACCESS_TOKEN_SECRET: ${{ secrets.ACCESS_TOKEN_SECRET }}
-      BEARER_TOKEN: ${{ secrets.BEARER_TOKEN }}
-      CONSUMER_KEY: ${{ secrets.CONSUMER_KEY }}
-      CONSUMER_SECRET: ${{ secrets.CONSUMER_SECRET }}
-      LYRICS_TOKEN: ${{ secrets.LYRICS_TOKEN }}
-      LYRICS_PATH: ${{ github.workspace }}/lyrics
     env:
       ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
       ACCESS_TOKEN_SECRET: ${{ secrets.ACCESS_TOKEN_SECRET }}
