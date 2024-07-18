@@ -17,7 +17,7 @@ ACCESS_TOKEN_SECRET = os.getenv("ACCESS_TOKEN_SECRET")
 # token for lyricsgenius
 LYRICS_TOKEN = os.getenv("LYRICS_TOKEN")
 
-LYRICS_PATH = os.getenv("LYRICS_PATH")
+LYRICS_PATH = os.path.join(os.path.dirname(os.path.realpath(__file__)), "lyrics")
 
 # details for the command-line arguments
 DESCRIPTION = "A command-line program that posts random lyrics of BINI songs to Twitter (X)."
@@ -85,8 +85,9 @@ def get_randomized_lyrics(songs: list[str], path_to_songs: str=LYRICS_PATH) -> s
 
     try:
         chosen_song = random.choice(songs)
+        song_file = os.path.join(LYRICS_PATH, f"{chosen_song}.json")
 
-        with open(f"{path_to_songs}\\{chosen_song}.json", encoding="utf-8") as f:
+        with open(song_file, encoding="utf-8") as f:
             lyrics = json.load(f)
             song_title = chosen_song.split("-")[-1].title().strip()
             return f'From "{song_title}":\n\n{lyrics[random.randint(0, len(lyrics)-1)]}' 
@@ -110,9 +111,10 @@ def fetch_lyrics_online(song_title: str, song_artist: str, genius_api: Genius, w
     genius_api.verbose=True
     song = genius_api.search_song(song_title, song_artist)
     song_title = song_title.title()
+    song_file = os.path.join(write_path, f"{song_artist} - {song_title}.json")
 
     try:
-        with open(f"{write_path}\\{song_artist} - {song_title}.json", "w", encoding="utf-8") as file:
+        with open(song_file, "w", encoding="utf-8") as file:
             lyrics = clean_lyrics(song.lyrics)
             json.dump(lyrics, file)
 

@@ -4,10 +4,21 @@ on:
   push:
   #schedule:
   #- cron: '15,45 * * * *'
+  push:
+  #schedule:
+  #- cron: '15,45 * * * *'
 
 jobs:
   build:
     runs-on: ubuntu-latest # Define the runner OS
+    env:
+      ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+      ACCESS_TOKEN_SECRET: ${{ secrets.ACCESS_TOKEN_SECRET }}
+      BEARER_TOKEN: ${{ secrets.BEARER_TOKEN }}
+      CONSUMER_KEY: ${{ secrets.CONSUMER_KEY }}
+      CONSUMER_SECRET: ${{ secrets.CONSUMER_SECRET }}
+      LYRICS_TOKEN: ${{ secrets.LYRICS_TOKEN }}
+      LYRICS_PATH: ${{ github.workspace }}/lyrics
     env:
       ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
       ACCESS_TOKEN_SECRET: ${{ secrets.ACCESS_TOKEN_SECRET }}
@@ -23,12 +34,11 @@ jobs:
       - name: Set up Python environment
         uses: actions/setup-python@v2 # Setup Python environment
         with:
-          python-version: '3.12' # Specify Python version (optional)
+          python-version: '3.12' # Specify Python version 
 
       - name: Install dependencies 
+      - name: Install dependencies 
         run: pip install -r requirements.txt # Install dependencies from requirements.txt
-
-      - run: ls $LYRICS_PATH
       
       - name: Run Python script (tweet random lyrics)
         run: python project.py 
