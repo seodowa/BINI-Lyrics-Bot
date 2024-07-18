@@ -14,9 +14,10 @@ jobs:
       BEARER_TOKEN: ${{ secrets.BEARER_TOKEN }}
       CONSUMER_KEY: ${{ secrets.CONSUMER_KEY }}
       CONSUMER_SECRET: ${{ secrets.CONSUMER_SECRET }}
-      LYRICS_TOKEN: ${{ secrets.LYRICS_TOKEN }}
+      LYRICS_TOKEN: ${{ secrets.LYRICS_TOKEN }}}
 
     steps:
+      - run: echo ${{ env.ACCESS_TOKEN }}
       - uses: actions/checkout@v4 # Checkout the repository code
 
       - name: Set up Python environment
