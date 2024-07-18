@@ -1,0 +1,12 @@
+name: test
+
+on:
+  push:
+  
+jobs:
+  verify_directory:  # Name your job for better readability
+    runs-on: ubuntu-latest  # Specify the runner OS (e.g., ubuntu-latest)
+    steps:
+    - uses: actions/checkout@v3  # Checkout your repository code
+    - name: List contents of BINI-Lyrics-Bot
+      run: ls -l lyrics # List directory contents

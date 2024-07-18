@@ -1,0 +1,23 @@
+name: Tweet random BINI lyrics
+
+on:
+  schedule:
+  - cron: '15,45 * * * *'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest # Define the runner OS
+
+    steps:
+      - uses: actions/checkout@v4 # Checkout the repository code
+
+      - name: Set up Python environment
+        uses: actions/setup-python@v5 # Setup Python environment
+        with:
+          python-version: '3.12' # Specify Python version (optional)
+
+      - name: Install dependencies (optional)
+        run: pip install -r requirements.txt # Install dependencies from requirements.txt
+
+      - name: Run Python script (tweet random lyrics)
+        run: python project.py 
