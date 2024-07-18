@@ -9,9 +9,7 @@ jobs:
   build:
     runs-on: ubuntu-latest # Define the runner OS
 
-    steps:
-      - name: set environment variables
-        env:
+    env:
           ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
           ACCESS_TOKEN_SECRET: ${{ secrets.ACCESS_TOKEN_SECRET }}
           BEARER_TOKEN: ${{ secrets.BEARER_TOKEN }}
@@ -19,7 +17,8 @@ jobs:
           CONSUMER_SECRET: ${{ secrets.CONSUMER_SECRET }}
           LYRICS_TOKEN: ${{ secrets.LYRICS_TOKEN }}
           LYRICS_PATH: ${{ github.workspace }}/lyrics
-      
+
+    steps:    
       - uses: actions/checkout@v3 # Checkout the repository code
         name: Set up Python environment
         
