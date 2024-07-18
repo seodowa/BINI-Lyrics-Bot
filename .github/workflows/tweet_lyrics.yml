@@ -18,7 +18,7 @@ jobs:
 
     steps:
       - run: echo "work pls"
-      - run: echo ${{ env.LYRICS_PATH }}
+      - run: echo $LYRICS_PATH
       - uses: actions/checkout@v4 # Checkout the repository code
 
       - name: Set up Python environment
