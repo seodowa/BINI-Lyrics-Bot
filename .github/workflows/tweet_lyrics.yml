@@ -15,7 +15,7 @@ jobs:
       CONSUMER_KEY: ${{ secrets.CONSUMER_KEY }}
       CONSUMER_SECRET: ${{ secrets.CONSUMER_SECRET }}
       LYRICS_TOKEN: ${{ secrets.LYRICS_TOKEN }}
-      LYRICS_PATH: home/runner/work/BINI-Lyrics-Bot/lyrics
+      LYRICS_PATH: lyrics
 
     steps:
       - run: echo "work pls"
