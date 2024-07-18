@@ -8,6 +8,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest # Define the runner OS
+    environment: TOKENS
     
     steps:      
       - uses: actions/checkout@v4 # Checkout the repository code
