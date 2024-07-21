@@ -110,7 +110,8 @@ def fetch_lyrics_online(song_title: str, song_artist: str, genius_api: Genius, w
     # verbose set to true to get a detailed message if ever search_song fails
     genius_api.verbose=True
     song = genius_api.search_song(song_title, song_artist)
-    song_title = song_title.title()
+    song_title = song.title.title()
+    song_artist = song.artist
     song_file = os.path.join(write_path, f"{song_artist} - {song_title}.json")
 
     try:
@@ -132,6 +133,7 @@ def clean_lyrics(lyrics: str) -> list[str]:
 
     # remove the \n at the beginning of every line if present
     cleaned_lyrics = [line.removeprefix("\n") for line in temp_lyrics]
+    cleaned_lyrics[-1] += "\n"
 
     return cleaned_lyrics
 
