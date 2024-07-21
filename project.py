@@ -90,7 +90,7 @@ def get_randomized_lyrics(songs: list[str], path_to_songs: str=LYRICS_PATH) -> s
         with open(song_file, encoding="utf-8") as f:
             lyrics = json.load(f)
             song_title = chosen_song.split("-")[-1].title().strip()
-            return f'From "{song_title}":\n\n{lyrics[random.randint(0, len(lyrics)-1)]}' 
+            return f'From "{song_title}":\n\n{lyrics[random.randint(0, len(lyrics)-1)]}\n{create_hashtag(song_title)}' 
     
     except FileNotFoundError:
         raise FileNotFoundError(f"{path_to_songs} directory not found.")
@@ -134,6 +134,11 @@ def clean_lyrics(lyrics: str) -> list[str]:
     cleaned_lyrics = [line.removeprefix("\n") for line in temp_lyrics]
 
     return cleaned_lyrics
+
+
+def create_hashtag(song_title: str) -> str:
+    # omiit the spaces (and commas if applicable) of the song title
+    return f"#BINI #{song_title.replace(" ", "").replace(",", "")}"
 
 
 if __name__ == "__main__":

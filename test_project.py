@@ -32,3 +32,9 @@ def test_scan_songs():
     assert project.scan_songs(LYRICS_PATH) == ["BINI - Salamin, Salamin"]
     # os.path.dirname(os.path.realpath(__file__)) is the dir where the python project file is located
     assert project.scan_songs(os.path.dirname(os.path.realpath(__file__))) == []
+
+
+def test_create_hashtag():
+    assert project.create_hashtag("Born To Win") == "#BINI #BornToWin"
+    assert project.create_hashtag("Lagi") == "#BINI #Lagi"
+    assert project.create_hashtag("Salamin, Salamin") == "#BINI #SalaminSalamin"
